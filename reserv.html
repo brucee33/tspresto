@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rezervacija</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="static/css/styles.css">
+  <style>
+    /* Stil za popup poruku */
+    .popup-message {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      background-color: white;
+      padding: 20px;
+      border: 1px solid black;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="#">Logo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="about.html">O nama</a></li>
+            <li class="nav-item"><a class="nav-link" href="video.html">Video</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html">Pocetna</a></li>
+            <li class="nav-item"><a class="nav-link button" href="reserv.html">Rezerviraj</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Kontakt</a></li>
+            <li class="nav-item"><a class="nav-link" href="login.html">Admin login</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="content">
+    <form action="/rezervacija" method="post" class="reservation-form">
+      <div class="elem-group">
+        <label for="name">Ime i prezime</label>
+        <input type="text" id="name" name="visitor_name" placeholder="Ime i prezime" pattern="[A-Z\sa-z]{3,20}" required>
+      </div>
+      <div class="elem-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="visitor_email" placeholder="vasa.email.adresa@example.com">
+      </div>
+      <div class="elem-group">
+        <label for="phone">Broj mobitela</label>
+        <input type="tel" id="phone" name="visitor_phone" placeholder="09XXXXXXX" required>
+      </div>
+      <hr>
+      <div class="elem-group inlined">
+        <label for="datum">Datum događaja</label>
+        <input type="date" id="checkin-date" name="checkin" class="calendar-date" required>
+      </div>
+      <div class="elem-group">
+        <label for="room-selection">Događaj</label>
+        <select id="room-selection" name="room_preference">
+          <option value="">Odaberite događaj</option>
+          <option value="pratnja">Pratnja</option>
+          <option value="svadba">Svadba</option>
+          <option value="momacka">Momacka</option>
+        </select>
+      </div>
+      <hr>
+      <div class="elem-group">
+        <label for="message">Dodatne informacije</label>
+        <textarea id="message" name="visitor_message" placeholder="Napišite nam nešto."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Rezerviraj</button>
+    </form>
+  </div>
+
+  <div id="popup-message" class="popup-message"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="static/css/styles.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="#">Logo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="about.html">O nama</a></li>
+            <li class="nav-item"><a class="nav-link" href="video.html">Video</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html">Pocetna</a></li>
+            <li class="nav-item"><a class="nav-link button" href="reserv.html">Rezerviraj</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Kontakt</a></li>
+            <li class="nav-item"><a class="nav-link" href="login.html">Admin login</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <h1>Welcome, User!</h1>
+  
+  <form action="/listreservations" method="get">
+    <button id="searchButton" type="submit">Search Reservations</button>
+  </form>
+  
+  {% if poruka %}
+    <p>{{ poruka }}</p>
+  {% endif %}
+
+  {% if rezervacije %}
+    <h2>Reservations:</h2>
+    <ul>
+      {% for rezervacija in rezervacije %}
+        <li>{{ rezervacija }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  
+  <div id="reservationList"></div>
+  
+  <h2>Delete Reservation</h2>
+  <form action="/deletereservation" method="post">
+    <input type="text" id="reservationId" name="reservationId" placeholder="Reservation ID">
+    <button id="deleteButton" type="submit">Delete</button>
+  </form>
+</body>
+</html>
